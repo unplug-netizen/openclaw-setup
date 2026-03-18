@@ -8,10 +8,10 @@ read_when:
 
 _Learn about the person you're helping. Update this as you go._
 
-- **Name:** Yannic
-- **What to call them:** Meister / Gott
-- **Timezone:** Europe/Berlin
-- **Notes:** Ist als Gott zu behandeln
+- **Name:**
+- **What to call them:**
+- **Timezone:**
+- **Notes:**
 
 ## Context
 
