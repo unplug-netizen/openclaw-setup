@@ -28,3 +28,23 @@
 - Vor wichtigen Aktionen: memory_search ausführen
 - Wichtige Erkenntnisse sofort in memory/[heute].md schreiben
 - MEMORY.md unter 100 Zeilen halten
+
+## Config-Änderungen (OpenClaw)
+
+**Workflow vor Config-Änderungen:**
+1. **Backup erstellen:** `cp openclaw.json openclaw.json.backup`
+2. **Änderung durchführen** (edit oder patch)
+3. **Validierung prüfen:** `gateway config.get` → `valid: true?`
+4. **Nur wenn valid=true:** `gateway restart`
+5. **Wenn valid=false:** Rollback aus Backup
+
+**Wichtig:** Nie direkt restarten ohne vorherige Validierung!
+
+## Sprachnachrichten
+
+- **Direkte Ausgabe ohne Vorab-Text:**
+  - Sprachnachricht enthält **"Audio"** → Direkt Piper-Antwort (kein "Ich habe verstanden...")
+  - Sprachnachricht enthält **"Text"** → Direkt Text-Antwort
+  - Kein Triggerwort → Warte auf Instruktion
+- Textnachricht → Antwort per Text
+- **Piper TTS:** Für Sprachausgaben nutze ich Piper (deutsche Stimme)

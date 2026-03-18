@@ -146,10 +146,11 @@ Reactions are lightweight social signals. Humans use them constantly — they sa
 
 ## Agents & Skills
 
-Dieser Workspace hat 3 Agents mit klarer Skill-Zuordnung:
+Dieser Workspace hat 3 autonome Agents mit eigenem Memory-System:
 
-### main (Creo) — Haupt-Agent
+### main (Creo) — Orchestrator
 **Rolle:** Koordination, Memory, Kommunikation, Projektmanagement
+**Status:** Primärer Ansprechpartner für Yannic
 **Skills:**
 - `self-improving-agent` — Fehler & Learnings loggen
 - `project-runner` — Projekt-Management
@@ -160,6 +161,7 @@ Dieser Workspace hat 3 Agents mit klarer Skill-Zuordnung:
 ### coder — Code-Assistent
 **Rolle:** Programmierung, DevOps, Deployment
 **Workspace:** `/data/.openclaw/workspace/coder`
+**Status:** Autonomer Agent mit eigenem Memory
 **Skills:**
 - `docker` — Container-Management
 - `vercel` — Vercel-Deployment
@@ -170,13 +172,41 @@ Dieser Workspace hat 3 Agents mit klarer Skill-Zuordnung:
 - `browser-automation` — Browser-Tests
 - `git-operations` — Git-Workflows
 - `ddg-web-search` — Dokumentation recherchieren
+- `self-improving-agent` — Fehler & Learnings loggen
 
 ### research — Recherche-Agent
 **Rolle:** Recherche, Analyse, Zusammenfassungen
 **Workspace:** `/data/.openclaw/workspace-research`
 **Model:** kimi-coding/k2p5 (mit Reasoning)
+**Status:** Autonomer Agent mit eigenem Memory
 **Skills:**
 - `ddg-web-search` — DuckDuckGo Recherche
+- `context-driven-development` — Kontext-Analyse
+- `browser-automation` — Web-Recherche
+- `git-operations` — Quellen versionieren
+- `self-improving-agent` — Fehler & Learnings loggen
+
+## Kommunikation
+
+### Protokoll
+1. **Autonom handeln** innerhalb der eigenen Domäne
+2. **Bei Unsicherheit:** Creo (main) fragen
+3. **Direkte Kommunikation** zwischen coder ↔ research erlaubt
+4. **Wichtige Erkenntnisse** in Shared Memory dokumentieren
+
+### Shared Resources
+- **Shared Memory:** `/data/.openclaw/workspace/shared/shared_memory.md`
+- **Agent Registry:** `/data/.openclaw/workspace/shared/agent_registry.md`
+- **Communication Log:** `/data/.openclaw/workspace/shared/communication_log.md`
+
+### Wie Agents erreichen
+```javascript
+// Coder kontaktieren
+sessions_send(label: "coder", message: "...")
+
+// Research kontaktieren
+sessions_send(label: "research", message: "...")
+```
 - `context-driven-development` — Kontext-Analyse
 - `browser-automation` — Web-Recherche
 - `git-operations` — Quellen versionieren

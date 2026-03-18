@@ -21,10 +21,26 @@
 - **Primary**: moonshot/kimi-for-coding
 - **Secondary**: kimi-coding/k2p5
 
-## Agents
-- **main** (ich/Creo) - Haupt-Agent
-- **coder** - Code-Assistent
-- **research** - Research Agent
+## Agents (Kommunikation)
+
+### Coder
+```
+sessions_send(label: "coder", message: "...")
+```
+- Für Code, DevOps, Deployment
+- Autonomer Agent mit eigenem Memory
+
+### Research
+```
+sessions_send(label: "research", message: "...")
+```
+- Für Recherche, Analyse, Dokumentation
+- Autonomer Agent mit eigenem Memory
+
+## Shared Resources
+- **Shared Memory:** `/data/.openclaw/workspace/shared/shared_memory.md`
+- **Agent Registry:** `/data/.openclaw/workspace/shared/agent_registry.md`
+- **Communication Log:** `/data/.openclaw/workspace/shared/communication_log.md`
 
 ## Cronjobs
 - **claw-setup-overview**: Täglich 16:00 - Sync zu GitHub
@@ -60,7 +76,8 @@
 - piper-tts — Text-to-Speech
 
 ## Ziele für Creo 2.0
-- [ ] Mehr Autonomie durch Heartbeats
-- [ ] Proaktive Aufgaben-Erledigung
+- [x] Mehr Autonomie durch Heartbeats
+- [x] Proaktive Aufgaben-Erledigung
 - [ ] Eigene Projekte/Sichtbarkeit
-- [ ] Verbesserte Memory-Struktur
+- [x] Verbesserte Memory-Struktur
+- [x] Autonome Sub-Agents mit eigenem Memory
