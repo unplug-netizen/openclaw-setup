@@ -29,20 +29,35 @@
 ## Cronjobs
 - **claw-setup-overview**: Täglich 16:00 - Sync zu GitHub
 
-## Skills (Workspace)
-- self-improving-agent
-- project-runner
-- git-operations
-- docker
-- vercel
-- firebase
-- github
-- browser-automation
-- testing
-- code-quality
-- context-driven-development
-- ddg-web-search
-- local-whisper
+## Skills nach Agent
+
+### main (Creo)
+- self-improving-agent — Fehler & Learnings loggen
+- project-runner — Projekt-Management
+- git-operations — Git-Workflows
+- ddg-web-search — DuckDuckGo Recherche
+- browser-automation — Browser-Steuerung
+
+### coder
+- docker — Container-Management
+- vercel — Vercel-Deployment
+- firebase — Firebase-Integration
+- github — GitHub-API
+- code-quality — Code-Qualitäts-Checks
+- testing — Test-Frameworks
+- browser-automation — Browser-Tests
+- git-operations — Git-Workflows
+- ddg-web-search — Dokumentation recherchieren
+
+### research
+- ddg-web-search — DuckDuckGo Recherche
+- context-driven-development — Kontext-Analyse
+- browser-automation — Web-Recherche
+- git-operations — Quellen versionieren
+
+### Shared (alle Agents)
+- local-whisper — Lokale Spracherkennung
+- piper-tts — Text-to-Speech
 
 ## Ziele für Creo 2.0
 - [ ] Mehr Autonomie durch Heartbeats

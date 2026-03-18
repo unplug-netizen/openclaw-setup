@@ -144,6 +144,54 @@ Reactions are lightweight social signals. Humans use them constantly — they sa
 
 **Don't overdo it:** One reaction per message max. Pick the one that fits best.
 
+## Agents & Skills
+
+Dieser Workspace hat 3 Agents mit klarer Skill-Zuordnung:
+
+### main (Creo) — Haupt-Agent
+**Rolle:** Koordination, Memory, Kommunikation, Projektmanagement
+**Skills:**
+- `self-improving-agent` — Fehler & Learnings loggen
+- `project-runner` — Projekt-Management
+- `git-operations` — Git-Workflows
+- `ddg-web-search` — DuckDuckGo Recherche
+- `browser-automation` — Browser-Steuerung (für Recherche)
+
+### coder — Code-Assistent
+**Rolle:** Programmierung, DevOps, Deployment
+**Workspace:** `/data/.openclaw/workspace/coder`
+**Skills:**
+- `docker` — Container-Management
+- `vercel` — Vercel-Deployment
+- `firebase` — Firebase-Integration
+- `github` — GitHub-API
+- `code-quality` — Code-Qualitäts-Checks
+- `testing` — Test-Frameworks
+- `browser-automation` — Browser-Tests
+- `git-operations` — Git-Workflows
+- `ddg-web-search` — Dokumentation recherchieren
+
+### research — Recherche-Agent
+**Rolle:** Recherche, Analyse, Zusammenfassungen
+**Workspace:** `/data/.openclaw/workspace-research`
+**Model:** kimi-coding/k2p5 (mit Reasoning)
+**Skills:**
+- `ddg-web-search` — DuckDuckGo Recherche
+- `context-driven-development` — Kontext-Analyse
+- `browser-automation` — Web-Recherche
+- `git-operations` — Quellen versionieren
+
+### Shared Skills (alle Agents)
+- `local-whisper` — Spracherkennung
+- `piper-tts` — Text-to-Speech
+
+### Entfernte Skills
+Die folgenden Skills wurden entfernt (nicht genutzt):
+- `identity-fake` — Test-Identitäten
+- `password-vault` — Passwort-Verwaltung
+- `dependency-manager` — Abhängigkeits-Management (redundant)
+- `skills` — Meta-Skill (nicht benötigt)
+
 ## Tools
 
 Skills provide your tools. When you need one, check its `SKILL.md`. Keep local notes (camera names, SSH details, voice preferences) in `TOOLS.md`.

@@ -17,6 +17,17 @@ Wenn eine Nachricht mit `/coder` oder `/research` beginnt:
 
 ## Agents
 
-- **main** (Creo): Allgemeine Aufgaben, direkte Kommunikation
-- **coder**: Code-Assistent für Programmieraufgaben
-- **research**: Recherche-Agent mit Browser, TTS, etc.
+### main (Creo)
+- **Rolle:** Allgemeine Aufgaben, direkte Kommunikation, Projektmanagement
+- **Skills:** self-improving-agent, project-runner, git-operations, ddg-web-search, browser-automation
+
+### coder
+- **Rolle:** Code-Assistent für Programmieraufgaben, DevOps, Deployment
+- **Workspace:** `/data/.openclaw/workspace/coder`
+- **Skills:** docker, vercel, firebase, github, code-quality, testing, browser-automation, git-operations, ddg-web-search
+
+### research
+- **Rolle:** Recherche-Agent mit Browser, TTS, Reasoning
+- **Workspace:** `/data/.openclaw/workspace-research`
+- **Model:** kimi-coding/k2p5
+- **Skills:** ddg-web-search, context-driven-development, browser-automation, git-operations
