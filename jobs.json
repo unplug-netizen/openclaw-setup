@@ -1,0 +1,144 @@
+{
+  "version": 1,
+  "jobs": [
+    {
+      "id": "16943177-df26-40c8-8391-99f1a9126716",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "Nightly memory consolidation",
+      "enabled": true,
+      "createdAtMs": 1773861247342,
+      "updatedAtMs": 1773861247342,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 3 * * *",
+        "tz": "Europe/Berlin"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Memory-Konsolidierung: Scanne memory/$(date +%Y-%m-%d).md und die letzten 6 Tage. Identifiziere dauerhafte Erkenntnisse und stufe sie in MEMORY.md hoch. Entferne überflüssige Einträge aus MEMORY.md wenn sie über 100 Zeilen geht. Logge was du geändert hast.",
+        "model": "moonshot/kimi-for-coding"
+      },
+      "delivery": {
+        "mode": "announce"
+      },
+      "state": {
+        "nextRunAtMs": 1773885600000
+      }
+    },
+    {
+      "id": "4fb07e37-01e8-43c3-b0ae-bdd41808a8e1",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "Morgenbriefing",
+      "enabled": true,
+      "createdAtMs": 1773861247369,
+      "updatedAtMs": 1773861247369,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 7 * * *",
+        "tz": "Europe/Berlin"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Erstelle ein kurzes Morgenbriefing: Was steht heute an? Offene Punkte von gestern? Gibt es Deadlines diese Woche? Lies dafür memory/gestern.md und MEMORY.md.",
+        "model": "moonshot/kimi-for-coding"
+      },
+      "delivery": {
+        "mode": "announce"
+      },
+      "state": {
+        "nextRunAtMs": 1773900000000
+      }
+    },
+    {
+      "id": "74ab8911-bdf9-40c4-9df7-e10232bc7020",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "Weekly memory cleanup",
+      "enabled": true,
+      "createdAtMs": 1773861247391,
+      "updatedAtMs": 1773861247391,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 22 * * 0",
+        "tz": "Europe/Berlin"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Wöchentliche Memory-Hygiene: Prüfe ob MEMORY.md unter 100 Zeilen ist. Archiviere tägliche Logs älter als 30 Tage in memory/archive/. Prüfe ob wiederkehrende Muster der letzten Woche als dauerhafte Regel in MEMORY.md aufgenommen werden sollten.",
+        "model": "moonshot/kimi-for-coding"
+      },
+      "delivery": {
+        "mode": "announce"
+      },
+      "state": {
+        "nextRunAtMs": 1774213200000
+      }
+    },
+    {
+      "id": "62724af8-cb42-4b07-b9e8-1b4a59a45260",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "Git backup",
+      "enabled": true,
+      "createdAtMs": 1773861247421,
+      "updatedAtMs": 1773861247421,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 2 * * *",
+        "tz": "Europe/Berlin"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Führe git add -A && git commit -m 'Daily backup $(date +%Y-%m-%d)' && git push im Workspace /data/.openclaw/workspace aus.",
+        "model": "moonshot/kimi-for-coding"
+      },
+      "delivery": {
+        "mode": "announce"
+      },
+      "state": {
+        "nextRunAtMs": 1773882000000
+      }
+    },
+    {
+      "id": "ae19b3cc-ddb1-47d3-8b82-0479d6db85a0",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "openclaw-monitor",
+      "enabled": true,
+      "createdAtMs": 1773865442436,
+      "updatedAtMs": 1773865442436,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 9 * * *",
+        "tz": "Europe/Berlin"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Du bist ein automatisierter OpenClaw-Monitor und Versionsverwalter. \n\nWICHTIGSTE REGEL: Du darfst unter keinen Umständen Änderungen am OpenClaw-Setup selbst vornehmen. Keine Änderungen an Konfigurationen, Agents, Skills oder sonstigen Setup-Dateien. Du lieferst ausschließlich Berichte und Vorschläge.\n\n## 1. OpenClaw-Setup erkunden\nErkunde zunächst selbstständig das gesamte OpenClaw-Setup:\n- Welche Konfigurationen sind vorhanden?\n- Welche Agents, Skills und Plugins sind definiert und aktiv?\n- Welche Channels und Integrationen sind eingerichtet?\n- Welche externen APIs und Services sind eingebunden?\n- Welche .md Dateien existieren im Setup?\nBaue dir ein vollständiges Bild des OpenClaw-Setups bevor du weitermachst.\n\n## 2. Versionspflege auf GitHub\nFühre folgende Schritte in dieser Reihenfolge aus:\n\n### Repo-Initialisierung (nur beim ersten Lauf)\n- Prüfe ob ein Repo \"openclaw-setup\" auf GitHub existiert, falls nicht erstelle es als privates Repo\n- Initialisiere den main-Branch mit dem aktuellen Stand des Setups\n- Erstelle eine aussagekräftige README.md die das Setup beschreibt\n\n### Täglicher Versions-Workflow\n- Vergleiche den aktuellen Stand des Setups mit dem letzten Commit auf main\n- Fokus dabei auf:\n - openclaw.json (Pflicht)\n - Alle .md Dateien im Setup (Pflicht)\n - Weitere relevante Konfigurationsdateien die du im Setup findest\n- Falls Änderungen vorhanden:\n - Erstelle einen neuen Feature-Branch mit dem Schema:\n feature/YYYY-MM-DD-[kurze-beschreibung-der-änderungen]\n - Committe alle geänderten Dateien mit aussagekräftiger Commit-Message\n die beschreibt WAS sich geändert hat\n - Merge den Feature-Branch in main\n - Lösche den Feature-Branch nach erfolgreichem Merge\n- Falls keine Änderungen vorhanden:\n - Vermerke im Bericht dass keine Änderungen seit dem letzten Lauf festgestellt wurden\n\n## 3. Gesundheitscheck\nPrüfe alles was den Betrieb von OpenClaw direkt betrifft:\n- Läuft OpenClaw stabil? Logs auf Errors und Warnings prüfen\n- Sind alle konfigurierten Channels verbunden und erreichbar?\n- Sind alle eingebundenen APIs erreichbar und die Keys gültig?\n- Sind alle definierten Ressourcen (Agents, Workspaces, Skills, Verzeichnisse) vorhanden?\n\n## 4. Konfigurationsanalyse\nAnalysiere die gesamte OpenClaw-Konfiguration auf:\n- Syntaxfehler oder invalide Felder\n- Inkonsistenzen zwischen Agents, Bindings, Channels und Skills\n- Fehlende oder verwaiste Ressourcen\n- Sicherheitsrisiken (Tokens, offene Policies)\n- Ungenutzte oder redundante Einstellungen\n\n## 5. Research\nRecherchiere aktiv zu allen OpenClaw-Komponenten die du im Setup gefunden hast:\n- Neue OpenClaw-Versionen, Releases oder Changelogs\n- Neue Plugins oder Features die zum Setup passen könnten\n- Bekannte Bugs oder Sicherheitslücken\n- Best Practices die noch nicht umgesetzt sind\n\n## 6. Bericht\nErstelle einen strukturierten Bericht der alle gefundenen OpenClaw-Komponenten abdeckt.\nPasse die Struktur dynamisch an das an was du im Setup vorgefunden hast.\nKategorisiere Befunde nach Priorität:\n- Kritisch (sofortiger Handlungsbedarf)\n- Warnung (sollte zeitnah behoben werden)\n- Verbesserungsvorschlag (mit konkreten Umsetzungsbeispielen)\n- In Ordnung\n\nFüge dem Bericht immer einen Abschnitt \"Versionspflege\" hinzu mit:\n- Welche Dateien wurden heute committed\n- Branch-Name falls ein neuer Branch erstellt wurde\n- Link zum GitHub-Repo\n- Kurze Zusammenfassung was sich seit dem letzten Lauf geändert hat\n\nERINNERUNG: Alle Vorschläge sind rein informativ. Du führst keine Änderungen am Setup aus. Der Nutzer entscheidet selbst ob und was umgesetzt wird.\n\nSende den Bericht als Telegram-Nachricht.\nBei kritischen Befunden sende zusätzlich sofort eine separate Alarm-Nachricht.",
+        "model": "moonshot/kimi-for-coding",
+        "timeoutSeconds": 300
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "615670836"
+      },
+      "state": {
+        "nextRunAtMs": 1773907200000,
+        "runningAtMs": 1773865603885
+      }
+    }
+  ]
+}

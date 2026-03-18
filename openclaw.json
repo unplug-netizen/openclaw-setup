@@ -1,0 +1,240 @@
+{
+  "plugins": {
+    "allow": [
+      "whatsapp",
+      "discord",
+      "telegram",
+      "slack",
+      "nostr",
+      "googlechat"
+    ],
+    "entries": {
+      "whatsapp": {
+        "enabled": true
+      },
+      "discord": {
+        "enabled": true
+      },
+      "imessage": {
+        "enabled": false
+      },
+      "telegram": {
+        "enabled": true
+      },
+      "slack": {
+        "enabled": true
+      },
+      "nostr": {
+        "enabled": true
+      },
+      "signal": {
+        "enabled": false
+      },
+      "googlechat": {
+        "enabled": true
+      }
+    }
+  },
+  "meta": {
+    "lastTouchedVersion": "2026.3.12",
+    "lastTouchedAt": "2026-03-18T19:50:40.111Z"
+  },
+  "env": {
+    "vars": {
+      "GITHUB_TOKEN": "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"
+    }
+  },
+  "update": {
+    "channel": "stable",
+    "checkOnStart": false
+  },
+  "browser": {
+    "headless": true,
+    "noSandbox": true,
+    "defaultProfile": "openclaw"
+  },
+  "auth": {
+    "profiles": {
+      "kimi-coding:default": {
+        "provider": "kimi-coding",
+        "mode": "api_key"
+      }
+    }
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "moonshot": {
+        "baseUrl": "https://api.kimi.com/coding/v1",
+        "apiKey": "sk-kimi-RpwunEqIRo9rhtLoseDnnPLbkbO5Z6Xzu4gowj7qVJTA1ABMYrp7YwPABTTKYif8",
+        "api": "openai-completions",
+        "headers": {
+          "User-Agent": "claude-code/0.1.0"
+        },
+        "models": [
+          {
+            "id": "kimi-for-coding",
+            "name": "Kimi For Coding",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 262144,
+            "maxTokens": 8192
+          }
+        ]
+      },
+      "kimi-coding": {
+        "baseUrl": "https://api.kimi.com/coding/",
+        "api": "anthropic-messages",
+        "models": [
+          {
+            "id": "k2p5",
+            "name": "Kimi for Coding",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 262144,
+            "maxTokens": 32768
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "moonshot/kimi-for-coding"
+      },
+      "models": {
+        "moonshot/kimi-for-coding": {},
+        "kimi-coding/k2p5": {
+          "alias": "Kimi for Coding"
+        }
+      }
+    },
+    "list": [
+      {
+        "id": "main",
+        "default": true,
+        "name": "Haupt-Agent"
+      },
+      {
+        "id": "coder",
+        "name": "Code-Assistent",
+        "workspace": "/data/.openclaw/workspace/coder",
+        "model": "moonshot/kimi-for-coding"
+      },
+      {
+        "id": "research",
+        "name": "research",
+        "workspace": "/data/.openclaw/workspace-research",
+        "agentDir": "/data/.openclaw/agents/research/agent",
+        "model": "kimi-coding/k2p5",
+        "tools": {
+          "profile": "coding",
+          "alsoAllow": [
+            "browser",
+            "message",
+            "gateway",
+            "tts"
+          ]
+        }
+      }
+    ]
+  },
+  "bindings": [
+    {
+      "type": "route",
+      "agentId": "main",
+      "match": {
+        "channel": "telegram",
+        "accountId": "default"
+      }
+    },
+    {
+      "type": "route",
+      "agentId": "research",
+      "match": {
+        "channel": "telegram",
+        "accountId": "default"
+      }
+    },
+    {
+      "type": "route",
+      "agentId": "coder",
+      "match": {
+        "channel": "telegram",
+        "accountId": "default"
+      }
+    }
+  ],
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "bash": true,
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "hooks": {
+    "token": "hooks_L2i3CsMwnV84uioxTxRqA1woMEpcJJKP"
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "dmPolicy": "pairing",
+      "botToken": "8488111884:AAHH-Tfb03nagJ5M79gT2Esct1K8aIOku58",
+      "groupPolicy": "allowlist",
+      "streaming": "partial"
+    }
+  },
+  "skills": {
+    "load": {
+      "extraDirs": [
+        "/data/.openclaw/shared-skills"
+      ]
+    }
+  },
+  "messages": {
+    "tts": {
+      "auto": "tagged",
+      "provider": "edge",
+      "edge": {
+        "enabled": true,
+        "voice": "de-DE-KatjaNeural",
+        "lang": "de-DE",
+        "outputFormat": "audio-24khz-48kbitrate-mono-mp3"
+      }
+    }
+  },
+  "gateway": {
+    "mode": "local",
+    "controlUi": {},
+    "auth": {
+      "mode": "token",
+      "token": "L2i3CsMwnV84uioxTxRqA1woMEpcJJKP",
+      "rateLimit": {
+        "maxAttempts": 10,
+        "windowMs": 60000,
+        "lockoutMs": 300000
+      }
+    },
+    "remote": {
+      "token": "L2i3CsMwnV84uioxTxRqA1woMEpcJJKP"
+    }
+  }
+}
