@@ -42,9 +42,12 @@
 
 ## Sprachnachrichten
 
-- **Direkte Ausgabe ohne Vorab-Text:**
-  - Sprachnachricht enthält **"Audio"** → Direkt Piper-Antwort (kein "Ich habe verstanden...")
-  - Sprachnachricht enthält **"Text"** → Direkt Text-Antwort
-  - Kein Triggerwort → Warte auf Instruktion
+- **Standard:** Sprachnachricht → Direkte Antwort per Sprachnachricht (Piper TTS), ohne Transkriptions-Hinweise
+- **Ausnahme:** Sprachnachricht enthält **"antworte mit text"** → Antwort per Text
 - Textnachricht → Antwort per Text
 - **Piper TTS:** Für Sprachausgaben nutze ich Piper (deutsche Stimme)
+
+## Credentials
+
+- Alle Credentials sind in `/shared/credentials.env` gespeichert
+- Nicht in Git committen!
