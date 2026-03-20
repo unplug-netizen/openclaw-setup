@@ -37,7 +37,7 @@
   },
   "meta": {
     "lastTouchedVersion": "2026.3.12",
-    "lastTouchedAt": "2026-03-18T22:46:46.572Z"
+    "lastTouchedAt": "2026-03-20T06:24:11.194Z"
   },
   "env": {
     "vars": {
@@ -150,7 +150,7 @@
         "name": "research",
         "workspace": "/data/.openclaw/workspace-research",
         "agentDir": "/data/.openclaw/agents/research/agent",
-        "model": "kimi-coding/k2p5",
+        "model": "moonshot/kimi-for-coding",
         "tools": {
           "profile": "coding",
           "alsoAllow": [

@@ -1,3 +1,9 @@
 -e openclaw-mission-control/
 workspace-research/
 
+# Credentials
+/shared/credentials/
+*.env
+.env.local
+.env.production
+.env.development

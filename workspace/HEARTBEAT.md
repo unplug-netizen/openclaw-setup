@@ -1,55 +1,46 @@
-# Creo Heartbeat Tasks
-# Diese Aufgaben werden bei jedem Heartbeat geprüft
+# Creo Heartbeat Tasks (Optimiert)
+# Schnelle Checks mit minimalen Tokens
 
-## Priorität: Hoch (jede Stunde)
+## Schnell-Check (immer)
 
-- [ ] Gibt es ungelesene Nachrichten die eine Antwort brauchen?
-- [ ] Gibt es Aufgaben mit Deadline in den nächsten 24 Stunden?
-- [ ] Gibt es blockierte Tasks, deren Blocker sich aufgelöst haben könnten?
+1. **Zeit-Kontext** (< 5 Sek)
+   - Spät (22:00-08:00) → Nur dringendes
+   - Wochenende → Nur kritisches
 
-## Priorität: Täglich
+2. **Letzte Nachrichten** (< 10 Sek)
+   - Ungelesene Messages?
+   - Direkte Erwähnungen?
+   - Wenn nichts → HEALTHBEAT_OK
 
-- [ ] Wurden wichtige Erkenntnisse von heute in memory/[heute].md gespeichert?
-- [ ] Muss MEMORY.md aktualisiert werden? (Ist sie noch unter 100 Zeilen?)
-- [ ] Gibt es anstehende Deadlines in 3-7 Tagen?
+## Priorität: Hoch (nur bei Bedarf)
+
+- [ ] Deadlines in 24h?
+- [ ] Blockierte Tasks entsperrt?
+
+## Priorität: Täglich (1x pro Tag, morgens)
+
+- [ ] Memory-File für heute existiert?
+- [ ] MEMORY.md > 100 Zeilen?
+- [ ] Deadlines in 3-7 Tagen?
 
 ## Priorität: Wöchentlich (Rotation)
 
-### Montag: Wochenplanung
-- [ ] Kalender für die Woche checken
-- [ ] Offene Aufgaben reviewen
-- [ ] Wochenziele definieren
+| Tag | Aufgabe | Dauer |
+|-----|---------|-------|
+| Mo | Wochenplanung | 2 Min |
+| Di | Git-Status | 1 Min |
+| Mi | Memory-Review | 2 Min |
+| Do | Skills checken | 1 Min |
+| Fr | Wochenrückblick | 2 Min |
+| Sa/So | Maintenance | 3 Min |
 
-### Dienstag: Projekt-Status
-- [ ] Git-Status aller Projekte prüfen
-- [ ] Offene PRs/Issues checken
-- [ ] Fortschritt dokumentieren
+## Token-Optimierung
 
-### Mittwoch: Wissen & Memory
-- [ ] MEMORY.md reviewen und aktualisieren
-- [ ] Neue Erkenntnisse festhalten
-- [ ] Veraltete Info entfernen
-
-### Donnerstag: Skills & Tools
-- [ ] Neue Skills recherchieren
-- [ ] TOOLS.md aktualisieren
-- [ ] Workflow-Verbesserungen identifizieren
-
-### Freitag: Wochenrückblick
-- [ ] Erledigte Aufgaben zusammenfassen
-- [ ] Lessons learned dokumentieren
-- [ ] Nächste Woche planen
-
-### Wochenende: Maintenance
-- [ ] Tägliche Logs der letzten Woche auf wichtige Muster prüfen
-- [ ] Wichtiges hochstufen nach MEMORY.md (Memory Consolidation)
-- [ ] Alte tägliche Logs > 30 Tage in memory/archive/ verschieben
-
-## Bei jedem Heartbeat:
-- [ ] Zeit- und Kontext-check (spät/abends = nur dringendes)
-- [ ] Letzte Nachrichten reviewen
-- [ ] Proaktiv werden wenn nötig
+- Nur prüfen, was nötig ist
+- Keine vollständigen Dateien lesen
+- `memory_search` statt `memory_get` wo möglich
+- Ergebnis direkt, keine Zusammenfassung wenn OK
 
 ## Stop-Bedingung
 
-Wenn nichts Aufmerksamkeit braucht, antworte nur mit: HEARTBEAT_OK
+Wenn nichts Aufmerksamkeit braucht: **HEALTHBEAT_OK**
