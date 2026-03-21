@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "ux": {
+      "version": "1.0.0",
+      "installedAt": 1773960953724
+    },
+    "playwright": {
+      "version": "1.0.3",
+      "installedAt": 1773960955334
+    },
+    "ui-ux-design": {
+      "version": "1.0.0",
+      "installedAt": 1773961060202
+    }
+  }
+}

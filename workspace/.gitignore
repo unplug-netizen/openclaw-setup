@@ -7,3 +7,7 @@ workspace-research/
 .env.local
 .env.production
 .env.development
+-e openclaw-mission-control/
+workspace-research/
+../openclaw-mission-control/
+../workspace-research/
